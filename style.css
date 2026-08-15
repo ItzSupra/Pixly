@@ -1,0 +1,312 @@
+/* Base variables for a clean, neutral utility look */
+:root {
+    --bg-color: #f5f5f5;
+    --workspace-bg: #e0e0e0;
+    --panel-bg: #ffffff;
+    --text-color: #333333;
+    --text-muted: #777777;
+    --border-color: #dddddd;
+    --primary-color: #0078d4;
+    --primary-hover: #005a9e;
+    --focus-ring: rgba(0, 120, 212, 0.5);
+    
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: var(--panel-bg);
+    border-bottom: 1px solid var(--border-color);
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.app-header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #f0f0f0;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn.primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.btn-group-row {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-group-row .btn {
+    flex: 1;
+    text-align: center;
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.toolbar {
+    width: 260px;
+    background-color: var(--panel-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.tool-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tool-group h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.tool-btn {
+    width: 100%;
+    text-align: left;
+}
+
+.tool-subgroup {
+    background-color: #f9f9f9;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: -4px;
+    margin-bottom: 4px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.input-row input[type="number"] {
+    width: 70px;
+    padding: 4px 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.slider-group label {
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Workspace */
+.workspace {
+    flex: 1;
+    background-color: var(--workspace-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: auto;
+    padding: 24px;
+    transition: background-color 0.2s ease;
+}
+
+.workspace.drag-over {
+    background-color: #d0e7f7;
+}
+
+.drop-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 120, 212, 0.85);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    z-index: 10;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+}
+
+.workspace-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+}
+
+.drop-hint {
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.editor-canvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-image: 
+        linear-gradient(45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(135deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(135deg, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    background-color: white;
+    cursor: crosshair;
+    object-fit: contain;
+    will-change: transform;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+.app-footer {
+    background-color: var(--panel-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 4px 16px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.status-bar {
+    display: flex;
+    gap: 24px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive optimization for smaller screens */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .toolbar {
+        width: 100%;
+        max-height: 220px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .tool-group {
+        flex: 1;
+        min-width: 160px;
+    }
+
+    .workspace {
+        padding: 12px;
+    }
+}

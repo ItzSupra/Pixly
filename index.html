@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixly - Image Editor</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Pixly</h1>
+        <div class="header-actions">
+            <!-- Hidden file input -->
+            <input type="file" id="image-upload" accept="image/png, image/jpeg, image/webp" style="display: none;">
+            <button id="btn-open" class="btn primary">Open Image</button>
+            <button id="btn-export" class="btn" disabled>Export</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="toolbar" id="toolbar">
+            <div class="tool-group">
+                <h3>Transform</h3>
+                
+                <button class="btn tool-btn" id="btn-crop" disabled>Crop</button>
+                <div id="crop-controls" class="tool-subgroup hidden">
+                    <button class="btn primary btn-sm" id="btn-crop-apply">Apply Crop</button>
+                    <button class="btn btn-sm" id="btn-crop-cancel">Cancel</button>
+                </div>
+
+                <button class="btn tool-btn" id="btn-rotate-left" disabled>Rotate Left</button>
+                <button class="btn tool-btn" id="btn-rotate-right" disabled>Rotate Right</button>
+                <button class="btn tool-btn" id="btn-flip-h" disabled>Flip Horizontal</button>
+                <button class="btn tool-btn" id="btn-flip-v" disabled>Flip Vertical</button>
+                
+                <button class="btn tool-btn" id="btn-resize" disabled>Resize</button>
+                <div id="resize-controls" class="tool-subgroup hidden">
+                    <div class="input-row">
+                        <input type="number" id="resize-w" placeholder="W" min="1">
+                        <span>×</span>
+                        <input type="number" id="resize-h" placeholder="H" min="1">
+                    </div>
+                    <div class="input-row">
+                        <label><input type="checkbox" id="resize-lock" checked> Lock Aspect</label>
+                    </div>
+                    <div class="input-row">
+                        <button class="btn primary btn-sm" id="btn-resize-apply">Apply</button>
+                        <button class="btn btn-sm" id="btn-resize-cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <h3>Adjustments</h3>
+                <div class="slider-group">
+                    <label for="slider-blur">Blur: <span id="blur-val">0</span>px</label>
+                    <input type="range" id="slider-blur" min="0" max="20" value="0" disabled>
+                </div>
+                <div class="slider-group">
+                    <label for="slider-brightness">Brightness: <span id="brightness-val">100</span>%</label>
+                    <input type="range" id="slider-brightness" min="0" max="200" value="100" disabled>
+                </div>
+                <div class="slider-group">
+                    <label for="slider-contrast">Contrast: <span id="contrast-val">100</span>%</label>
+                    <input type="range" id="slider-contrast" min="0" max="200" value="100" disabled>
+                </div>
+                <div class="btn-group-row">
+                    <button class="btn tool-btn" id="btn-grayscale" disabled>Grayscale</button>
+                    <button class="btn tool-btn" id="btn-sepia" disabled>Sepia</button>
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <h3>History</h3>
+                <button class="btn tool-btn" id="btn-undo" disabled>Undo</button>
+                <button class="btn tool-btn" id="btn-redo" disabled>Redo</button>
+                <button class="btn tool-btn" id="btn-reset" disabled>Reset</button>
+            </div>
+        </aside>
+
+        <main class="workspace" id="workspace">
+            <div class="drop-overlay hidden" id="drop-overlay">
+                <p>Drop image file here</p>
+            </div>
+            <div class="workspace-content" id="workspace-content">
+                <div class="empty-state" id="empty-state">
+                    <p>No image loaded</p>
+                    <button id="btn-open-empty" class="btn primary">Open an Image</button>
+                    <span class="drop-hint">or drag and drop an image here</span>
+                </div>
+                <canvas id="editor-canvas" class="editor-canvas hidden"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        <div class="status-bar" id="status-bar">
+            <span id="status-dimensions">Dimensions: -</span>
+            <span id="status-filetype">File: -</span>
+        </div>
+    </footer>
+
+    <script src="editor.js"></script>
+</body>
+</html>
