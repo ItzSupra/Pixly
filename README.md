@@ -1,7 +1,5 @@
 # Pixly
 
-#### Video Demo: [<URL HERE>](https://youtu.be/dt_B6sxLqEc)
-
 #### Live Demo: [pixly-cs50.netlify.app](https://pixly-cs50.netlify.app/)
 
 #### Description:
