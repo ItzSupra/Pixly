@@ -1,6 +1,7 @@
 # Pixly
 
-#### Live Demo: [pixly-cs50.netlify.app](https://pixly-cs50.netlify.app/)
+#### Live Demo: [pixly-cs50.netlify.app](https://pixly-cs50.netlify.app/)  and https://pixly-cs50.vercel.app/
+
 
 #### Description:
 **Pixly** is a clean, lightweight, and highly responsive client-side web-based image editor built as my CS50x Final Project. The core design philosophy of Pixly is to deliver a practical, near-instant, and intuitive workspace for everyday image manipulation tasks—such as cropping, rotating, flipping, resizing, and adjusting visual properties (like brightness, contrast, and blur)—without the computational overhead, high learning curve, or bloated interfaces of desktop-class graphics editing software like Adobe Photoshop.
